@@ -70,7 +70,7 @@
             color: var(--goblin-green);
         }
 
-        /* Sekcja powitalna (Hero) */
+        /* Sekcja powitalna (Hero) - usunięte zdjęcie, dodany mroczny gradient */
         .hero {
             height: 100vh;
             display: flex;
@@ -78,7 +78,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(13,15,14,0.7), rgba(13,15,14,1)), url('https://via.placeholder.com/1920x1080/1b3b22/0d0f0e?text=Miejsce+na+zdjęcie+bazy') no-repeat center center/cover;
+            background: radial-gradient(circle at center, #1b3b22 0%, #0d0f0e 70%);
             padding: 0 20px;
         }
 
@@ -115,11 +115,57 @@
             color: var(--bg-dark);
             box-shadow: 0 0 25px rgba(57, 255, 20, 0.6);
         }
+
+        /* Sekcja Czym się zajmujemy (Kafelki) */
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 50px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .feature-card {
+            background: var(--panel-bg);
+            border-left: 4px solid var(--goblin-green);
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            width: 100%;
+            max-width: 350px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: #1a221d;
+            box-shadow: 0 10px 25px rgba(57, 255, 20, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-title {
+            color: var(--goblin-green);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
         
         /* Sekcja Rekrutacji */
         .recruit-section {
             max-width: 800px;
-            margin: -40px auto 80px;
+            margin: 0 auto 80px; /* Zmieniony margines dla lepszego odstępu */
             padding: 30px;
             background: var(--panel-bg);
             border: 1px solid var(--dark-green);
@@ -291,7 +337,32 @@
         <button class="btn-join" onclick="window.location.href='#rekrutacja'">Złóż Podanie</button>
     </section>
 
-    <!-- NOWA SEKCJA REKRUTACJI -->
+    <!-- NOWA SEKCJA KAFELKÓW -->
+    <h2 class="section-title">Co nas wyróżnia?</h2>
+    <section class="features-container">
+        <!-- Karta 1 -->
+        <div class="feature-card">
+            <span class="feature-icon">🎲</span>
+            <h3 class="feature-title">Klimat RPG</h3>
+            <p class="feature-desc">Nie skupiamy się tylko na zarabianiu pikseli. Cenimy zgranie, wspólne spędzanie czasu na serwerze i budowanie prawdziwego klimatu organizacji.</p>
+        </div>
+
+        <!-- Karta 2 -->
+        <div class="feature-card">
+            <span class="feature-icon">⚔️</span>
+            <h3 class="feature-title">Strefa Deathmatch</h3>
+            <p class="feature-desc">Lubimy poczuć adrenalinę! Regularnie wpadamy na strefę DM, żeby potrenować strzelanie, bronić naszych interesów i po prostu dobrze się bawić.</p>
+        </div>
+
+        <!-- Karta 3 -->
+        <div class="feature-card">
+            <span class="feature-icon">🏆</span>
+            <h3 class="feature-title">Eventy Serwerowe</h3>
+            <p class="feature-desc">Jesteśmy aktywną częścią społeczności 4Life. Bierzemy udział w wydarzeniach, pomagamy innym i sami proponujemy administracji nowe pomysły na eventy.</p>
+        </div>
+    </section>
+
+    <!-- SEKCJA REKRUTACJI -->
     <section id="rekrutacja" class="recruit-section">
         <h2 class="recruit-title">Jak dołączyć do organizacji?</h2>
         
