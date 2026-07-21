@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chata Goblina | Organizacja MTA 4Life</title>
+    <style>
+        /* Główne zmienne kolorystyczne - "Gobliński klimat" */
+        :root {
+            --bg-dark: #0d0f0e;
+            --panel-bg: #151916;
+            --goblin-green: #39ff14;
+            --dark-green: #1b3b22;
+            --text-main: #e0e0e0;
+            --text-muted: #88928a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Pasek nawigacji */
+        header {
+            background: rgba(13, 15, 14, 0.9);
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--dark-green);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--goblin-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--goblin-green);
+        }
+
+        /* Sekcja powitalna (Hero) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Tutaj dodasz w przyszłości screena bazy jako tło */
+            background: linear-gradient(to bottom, rgba(13,15,14,0.7), rgba(13,15,14,1)), url('https://via.placeholder.com/1920x1080/1b3b22/0d0f0e?text=Miejsce+na+zdjęcie+bazy') no-repeat center center/cover;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 0 20px var(--goblin-green);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-join {
+            background: var(--dark-green);
+            color: #fff;
+            padding: 15px 30px;
+            border: 1px solid var(--goblin-green);
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+            cursor: pointer;
+        }
+
+        .btn-join:hover {
+            background: var(--goblin-green);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.6);
+        }
+
+        /* Sekcja Załogi */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 80px 0 40px;
+            color: var(--goblin-green);
+        }
+
+        .crew-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .crew-card {
+            background: var(--panel-bg);
+            border: 1px solid #2a332d;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .crew-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--goblin-green);
+            box-shadow: 0 5px 15px rgba(27, 59, 34, 0.5);
+        }
+
+        .crew-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--dark-green);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 2px solid var(--goblin-green);
+        }
+
+        .crew-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .crew-role {
+            color: var(--goblin-green);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Widżet Discord */
+        .discord-section {
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        /* Odtwarzacz Muzyki */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--panel-bg);
+            border: 1px solid var(--goblin-green);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--goblin-green);
+        }
+
+        .song-status {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .play-btn {
+            background: var(--goblin-green);
+            color: var(--bg-dark);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .volume-slider {
+            width: 80px;
+            accent-color: var(--goblin-green);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Chata Goblina</div>
+        <nav>
+            <ul>
+                <li><a href="#">Strona Główna</a></li>
+                <li><a href="#zaloga">Załoga</a></li>
+                <li><a href="#discord">Discord</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Witaj w Chacie Goblina</h1>
+        <p>Oficjalna organizacja na serwerze MTA 4Life. Dołącz do nas, by wspólnie budować potęgę, zbierać flotę i dominować na serwerze.</p>
+        <button class="btn-join" onclick="window.location.href='#discord'">Złóż Podanie</button>
+    </section>
+
+    <h2 class="section-title" id="zaloga">Zarząd Organizacji</h2>
+    <section class="crew-container">
+        <!-- Karta 1 -->
+        <div class="crew-card">
+            <div class="crew-avatar"></div>
+            <h3 class="crew-name">TwójNick</h3>
+            <p class="crew-role">Lider / Szef Goblina</p>
+        </div>
+        <!-- Karta 2 -->
+        <div class="crew-card">
+            <div class="crew-avatar"></div>
+            <h3 class="crew-name">Gracz2</h3>
+            <p class="crew-role">Zastępca</p>
+        </div>
+        <!-- Karta 3 -->
+        <div class="crew-card">
+            <div class="crew-avatar"></div>
+            <h3 class="crew-name">Gracz3</h3>
+            <p class="crew-role">Rekruter</p>
+        </div>
+    </section>
+
+    <h2 class="section-title" id="discord">Aktywność na Discordzie</h2>
+    <section class="discord-section">
+        <p style="margin-bottom: 20px; color: var(--text-muted);">Tutaj wkleisz kod iframe z ustawień Twojego serwera Discord (Widżet)</p>
+        <!-- Przykładowy wygląd miejsca na widżet -->
+        <div style="width: 350px; height: 500px; background: #2f3136; margin: 0 auto; border-radius: 10px; border: 1px solid #202225; display: flex; align-items: center; justify-content: center; color: #8e9297;">
+            [Widżet Discord]
+        </div>
+    </section>
+
+    <!-- Odtwarzacz Muzyki -->
+    <div class="music-player">
+        <button class="play-btn" id="playBtn">▶</button>
+        <div class="music-info">
+            <span class="song-title">Goblin Radio / MTA Vibes</span>
+            <span class="song-status" id="songStatus">Zatrzymano</span>
+        </div>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.1" value="0.3">
+        
+        <!-- Ukryty tag audio - tu podmieniasz link do MP3 lub Radia URL -->
+        <audio id="myAudio" loop>
+            <!-- Poniżej przykładowy strumień audio, możesz wstawić plik .mp3 wrzucony na serwer -->
+            <source src="https://stream.open.fm/31" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        // Prosty skrypt do obsługi odtwarzacza
+        const audio = document.getElementById('myAudio');
+        const playBtn = document.getElementById('playBtn');
+        const songStatus = document.getElementById('songStatus');
+        const volumeSlider = document.getElementById('volumeSlider');
+        
+        // Ustaw głośność domyślną
+        audio.volume = volumeSlider.value;
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = '⏸';
+                songStatus.innerText = 'Odtwarzanie...';
+                songStatus.style.color = 'var(--goblin-green)';
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '▶';
+                songStatus.innerText = 'Zatrzymano';
+                songStatus.style.color = 'var(--text-muted)';
+            }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+    </script>
+
+</body>
+</html>
