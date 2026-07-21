@@ -78,7 +78,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Tutaj dodasz w przyszłości screena bazy jako tło */
             background: linear-gradient(to bottom, rgba(13,15,14,0.7), rgba(13,15,14,1)), url('https://via.placeholder.com/1920x1080/1b3b22/0d0f0e?text=Miejsce+na+zdjęcie+bazy') no-repeat center center/cover;
             padding: 0 20px;
         }
@@ -115,6 +114,53 @@
             background: var(--goblin-green);
             color: var(--bg-dark);
             box-shadow: 0 0 25px rgba(57, 255, 20, 0.6);
+        }
+        
+        /* Sekcja Rekrutacji */
+        .recruit-section {
+            max-width: 800px;
+            margin: -40px auto 80px;
+            padding: 30px;
+            background: var(--panel-bg);
+            border: 1px solid var(--dark-green);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .recruit-steps {
+            text-align: left;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .recruit-steps span {
+            color: var(--goblin-green);
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+
+        .recruit-template {
+            background: var(--bg-dark);
+            color: var(--goblin-green);
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px dashed var(--dark-green);
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            margin-bottom: 25px;
+            user-select: all;
+        }
+        
+        .recruit-title {
+            text-align: center;
+            color: var(--goblin-green);
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
         /* Sekcja Załogi */
@@ -242,7 +288,30 @@
     <section class="hero">
         <h1>Witaj w Chacie Goblina</h1>
         <p>Oficjalna organizacja na serwerze MTA 4Life. Dołącz do nas, by wspólnie budować potęgę, zbierać flotę i dominować na serwerze.</p>
-        <button class="btn-join" onclick="window.location.href='#discord'">Złóż Podanie</button>
+        <button class="btn-join" onclick="window.location.href='#rekrutacja'">Złóż Podanie</button>
+    </section>
+
+    <!-- NOWA SEKCJA REKRUTACJI -->
+    <section id="rekrutacja" class="recruit-section">
+        <h2 class="recruit-title">Jak dołączyć do organizacji?</h2>
+        
+        <div class="recruit-steps">
+            <p><span>1.</span> Skopiuj poniższy wzór podania.</p>
+            <p><span>2.</span> Dołącz na naszego Discorda klikając przycisk poniżej.</p>
+            <p><span>3.</span> Wklej i wypełnij skopiowany wzór na kanale <b>#wzor-podania</b>.</p>
+        </div>
+
+        <!-- Wzór podania -->
+        <div class="recruit-template">Nick: 
+Pid: 
+LP: 
+Ilość Godzin: 
+Czy akceptujesz regulamin: 
+Kto polecił tobię organizacje: [nie obowiązkowe ]</div>
+
+        <div style="text-align: center;">
+            <button class="btn-join" onclick="window.open('https://discord.gg/dejn37QEJS', '_blank')">Dołącz na Discord</button>
+        </div>
     </section>
 
     <h2 class="section-title" id="zaloga">Zarząd Organizacji</h2>
